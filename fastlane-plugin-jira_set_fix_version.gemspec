@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = 'tommy.lynge@gmail.com'
 
   spec.summary       = 'Tags all Jira issues mentioned in git changelog with with a fix version from parameter :name'
-  # spec.homepage      = "https://github.com/<GITHUB_USERNAME>/fastlane-plugin-jira_set_fix_version"
+  spec.homepage      = "https://github.com/sadiq81/fastlane-plugin-jira_set_fix_version"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*"] + %w(README.md LICENSE)

@@ -1,0 +1,7 @@
+lane :update_jira do
+  version_number = get_version_number
+  build_number = get_build_number
+  lane = lane_context[SharedValues::LANE_NAME].split[-1]
+  jira_set_fix_version(
+    name: "#{lane} #{version_number} (#{build_number})"
+)

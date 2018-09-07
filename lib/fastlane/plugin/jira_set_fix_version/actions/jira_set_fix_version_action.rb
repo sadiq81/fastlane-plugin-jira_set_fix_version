@@ -43,7 +43,8 @@ module Fastlane
           start_date = Date.today.to_s
         end
 
-        version = client.Version.build
+        version = project.versions.find { |version| version.name == name }
+        version = client.Version.build if version.nil?
         version.save!({
           "description" => description,
           "name" => name,

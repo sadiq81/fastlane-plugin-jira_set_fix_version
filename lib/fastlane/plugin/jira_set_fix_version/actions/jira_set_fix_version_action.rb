@@ -44,7 +44,8 @@ module Fastlane
         end
 
         version = project.versions.find { |version| version.name == name }
-        version = client.Version.build if version.nil?        version.save!({
+        version = client.Version.build if version.nil?
+        version.save!({
           "description" => description,
           "name" => name,
           "archived" => archived,

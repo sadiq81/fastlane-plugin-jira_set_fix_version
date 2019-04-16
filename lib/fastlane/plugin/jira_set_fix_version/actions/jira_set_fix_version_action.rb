@@ -44,15 +44,17 @@ module Fastlane
         end
 
         version = project.versions.find { |version| version.name == name }
-        version = client.Version.build if version.nil?
-        version.save!({
-          "description" => description,
-          "name" => name,
-          "archived" => archived,
-          "released" => released,
-          "startDate" => start_date,
-          "projectId" => project_id
-        })
+        version = client.Version.build
+        if version.nil?
+          version.save!({
+            "description" => description,
+            "name" => name,
+            "archived" => archived,
+            "released" => released,
+            "startDate" => start_date,
+            "projectId" => project_id
+          })
+        end
         Actions.lane_context[SharedValues::CREATE_JIRA_VERSION_VERSION_ID] = version.id
 
         if Actions.lane_context[SharedValues::FL_CHANGELOG].nil?
@@ -169,7 +171,7 @@ module Fastlane
                                          optional: true,
                                          default_value: Date.today.to_s)
           ]
-        end
+      end
 
       def self.is_supported?(platform)
         true
